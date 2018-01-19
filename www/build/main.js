@@ -98,9 +98,9 @@ var AboutPage = (function () {
     }
     AboutPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-about',template:/*ion-inline-start:"/Users/nilshohgraefe/Documents/Development/WebstormProjects/MA2018_Ionic/src/pages/about/about.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      About\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"/Users/nilshohgraefe/Documents/Development/WebstormProjects/MA2018_Ionic/src/pages/about/about.html"*/
+            selector: 'page-about',template:/*ion-inline-start:"/Users/nilshohgraefe/Documents/Development/WebstormProjects/MA2018_Ionic/src/pages/about/about.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      About\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  If you came here by clicking on the button "Next Page" you will notice a return arrow in the top left corner that will bring\n  you back to the previous page, since we are using the push and pop methods.\n  <br>\n  <br>\n  Whereas, if you came here by clicking on the "About" tab at the bottom you won\'t see the return arrow since we are\n  using the [root] property. Meaning each tab has its own history stack.\n\n</ion-content>\n'/*ion-inline-end:"/Users/nilshohgraefe/Documents/Development/WebstormProjects/MA2018_Ionic/src/pages/about/about.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]])
     ], AboutPage);
     return AboutPage;
 }());
@@ -133,9 +133,9 @@ var ContactPage = (function () {
     }
     ContactPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-contact',template:/*ion-inline-start:"/Users/nilshohgraefe/Documents/Development/WebstormProjects/MA2018_Ionic/src/pages/contact/contact.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Contact\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <ion-list-header>Follow us on Twitter</ion-list-header>\n    <ion-item>\n      <ion-icon name="ionic" item-start></ion-icon>\n      @ionicframework\n    </ion-item>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/nilshohgraefe/Documents/Development/WebstormProjects/MA2018_Ionic/src/pages/contact/contact.html"*/
+            selector: 'page-contact',template:/*ion-inline-start:"/Users/nilshohgraefe/Documents/Development/WebstormProjects/MA2018_Ionic/src/pages/contact/contact.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Documentation\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <ion-list-header>Check out more documentation at</ion-list-header>\n    <ion-item>\n      <ion-icon name="ionic" item-start></ion-icon>\n      https://ionicframework.com/docs/\n    </ion-item>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/nilshohgraefe/Documents/Development/WebstormProjects/MA2018_Ionic/src/pages/contact/contact.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]])
     ], ContactPage);
     return ContactPage;
 }());
@@ -151,6 +151,7 @@ var ContactPage = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__about_about__ = __webpack_require__(195);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -162,17 +163,74 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var HomePage = (function () {
-    function HomePage(navCtrl) {
+    function HomePage(navCtrl, toastCtrl, alertCtrl, loadingCtrl, actionSheetCtrl) {
         this.navCtrl = navCtrl;
+        this.toastCtrl = toastCtrl;
+        this.alertCtrl = alertCtrl;
+        this.loadingCtrl = loadingCtrl;
+        this.actionSheetCtrl = actionSheetCtrl;
     }
+    HomePage.prototype.showToast = function () {
+        var toast = this.toastCtrl.create({
+            message: 'This is an example of a toast',
+            duration: 3000
+        });
+        toast.present();
+    };
+    HomePage.prototype.showAlert = function () {
+        var alert = this.alertCtrl.create({
+            title: 'Example Alert',
+            subTitle: 'This is an example of a basic alert',
+            buttons: ['Understood!']
+        });
+        alert.present();
+    };
+    HomePage.prototype.showLoading = function () {
+        var loader = this.loadingCtrl.create({
+            content: "Please wait...",
+            duration: 3000
+        });
+        loader.present();
+    };
+    HomePage.prototype.showActionSheet = function () {
+        var actionSheet = this.actionSheetCtrl.create({
+            title: 'An example action sheet',
+            buttons: [
+                {
+                    text: 'Option1',
+                    role: 'option1',
+                    handler: function () {
+                        console.log('Option1 clicked');
+                    }
+                }, {
+                    text: 'Option2',
+                    handler: function () {
+                        console.log('Option2 clicked');
+                    }
+                }, {
+                    text: 'Option3',
+                    role: 'option3',
+                    handler: function () {
+                        console.log('Option3 clicked');
+                    }
+                }
+            ]
+        });
+        actionSheet.present();
+    };
+    HomePage.prototype.goToAbout = function () {
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__about_about__["a" /* AboutPage */]);
+    };
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"/Users/nilshohgraefe/Documents/Development/WebstormProjects/MA2018_Ionic/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>Home</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <h2>Welcome to Ionic!</h2>\n  <p>\n    This starter project comes with simple tabs-based layout for apps\n    that are going to primarily use a Tabbed UI.\n  </p>\n  <p>\n    Take a look at the <code>src/pages/</code> directory to add or change tabs,\n    update any existing page or create new pages.\n  </p>\n</ion-content>\n'/*ion-inline-end:"/Users/nilshohgraefe/Documents/Development/WebstormProjects/MA2018_Ionic/src/pages/home/home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"/Users/nilshohgraefe/Documents/Development/WebstormProjects/MA2018_Ionic/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>Home</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <h2>Mobile App Development</h2>\n  <h3>Ionic Framework</h3>\n  <p>\n    This project will demonstrate some components and basic navigation provided by the Ionic framework.\n  </p>\n  <p>\n    Just tap one of the following <b>buttons</b> to display different available components.\n  </p>\n  <button ion-button (click)="showToast(\'bottom\')">Show me the "Toast" component</button>\n  <button ion-button (click)="showAlert()">Show me the "Alert" component</button>\n  <button ion-button (click)="showLoading()">Show me the "Loading" component</button>\n  <button ion-button (click)="showActionSheet()">Show me the "Action Sheet" component</button>\n  <p>\n    You can now either navigate to the other pages by clicking on the tabs below or by clicking on the following button.\n    Notice the slightly different behaviour?\n  </p>\n  <button ion-button (click)="goToAbout()">Next Page</button>\n</ion-content>\n'/*ion-inline-end:"/Users/nilshohgraefe/Documents/Development/WebstormProjects/MA2018_Ionic/src/pages/home/home.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ToastController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* ActionSheetController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* ActionSheetController */]) === "function" && _e || Object])
     ], HomePage);
     return HomePage;
+    var _a, _b, _c, _d, _e;
 }());
 
 //# sourceMappingURL=home.js.map
@@ -238,11 +296,11 @@ var AppModule = (function () {
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["a" /* BrowserModule */],
-                __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["c" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* MyApp */], {}, {
+                __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* MyApp */], {}, {
                     links: []
                 })
             ],
-            bootstrap: [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["a" /* IonicApp */]],
+            bootstrap: [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["c" /* IonicApp */]],
             entryComponents: [
                 __WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* MyApp */],
                 __WEBPACK_IMPORTED_MODULE_4__pages_about_about__["a" /* AboutPage */],
@@ -253,7 +311,7 @@ var AppModule = (function () {
             providers: [
                 __WEBPACK_IMPORTED_MODULE_8__ionic_native_status_bar__["a" /* StatusBar */],
                 __WEBPACK_IMPORTED_MODULE_9__ionic_native_splash_screen__["a" /* SplashScreen */],
-                { provide: __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* ErrorHandler */], useClass: __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* IonicErrorHandler */] }
+                { provide: __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* ErrorHandler */], useClass: __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["d" /* IonicErrorHandler */] }
             ]
         })
     ], AppModule);
@@ -301,7 +359,7 @@ var MyApp = (function () {
     MyApp = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/Users/nilshohgraefe/Documents/Development/WebstormProjects/MA2018_Ionic/src/app/app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/Users/nilshohgraefe/Documents/Development/WebstormProjects/MA2018_Ionic/src/app/app.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
     ], MyApp);
     return MyApp;
 }());
