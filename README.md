@@ -24,9 +24,10 @@ This document outlines essential information about the Ionic framework including
 
 ## How to create a new Ionic app
 
-Running the following command from the command line will create a new project, install npm modules for the application and set up Cordova:
+Running the following commands from the command line will create a new project, install npm modules for the application and set up Cordova:
 
-`$ ionic start MyIonicProject tabs`
+    $ npm install -g cordova ionic
+    $ ionic start MyIonicProject tabs
 
 Ionic offers some standard app templates, e.g. including layouts using tabs or a swipable side menu.
 A quick preview of the app in the browser can be shown by using the serve command from within the project folder:
